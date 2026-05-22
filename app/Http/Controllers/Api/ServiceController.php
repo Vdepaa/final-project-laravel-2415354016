@@ -14,6 +14,7 @@ class ServiceController extends Controller
     public function index(Request $request): JsonResponse
     {
         $status = $request->query('status');
+            
         $query = Service::query();
 
         if ($status !== null) {

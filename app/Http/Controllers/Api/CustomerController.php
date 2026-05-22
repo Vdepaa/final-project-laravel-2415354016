@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    // GET /api/customers (Mendapatkan semua/filter customer)
     public function index(Request $request): JsonResponse
     {
         $status = $request->query('status');
@@ -40,7 +39,6 @@ class CustomerController extends Controller
         ]);
     }
 
-    // POST /api/customers (Membuat customer baru)
     public function store(Request $request): JsonResponse
     {
         $data = $request->validate([
@@ -62,7 +60,6 @@ class CustomerController extends Controller
         ], 201);
     }
 
-    // GET /api/customers/{id} (Mendapatkan detail satu customer)
     public function show(int $customer): JsonResponse
     {
         $customerData = Customer::query()->find($customer);
@@ -82,7 +79,6 @@ class CustomerController extends Controller
         ]);
     }
 
-    // PUT /api/customers/{id} (Mengubah data customer)
     public function update(Request $request, int $customer): JsonResponse
     {
         $customerData = Customer::query()->find($customer);
@@ -113,7 +109,6 @@ class CustomerController extends Controller
         ]);
     }
 
-    // DELETE /api/customers/{id} (Menghapus customer)
     public function destroy(int $customer): JsonResponse
     {
         $customerData = Customer::query()->find($customer);
@@ -126,7 +121,6 @@ class CustomerController extends Controller
             ], 404);
         }
 
-        // Proteksi: Jika customer memiliki subscription, tidak boleh dihapus
         if ($customerData->subscriptions()->exists()) {
             return response()->json([
                 'success' => false,
@@ -144,7 +138,6 @@ class CustomerController extends Controller
         ]);
     }
 
-    // PATCH /api/customers/{id}/activate (Mengaktifkan status customer)
     public function activate(int $customer): JsonResponse
     {
         $customerData = Customer::query()->find($customer);
@@ -166,7 +159,6 @@ class CustomerController extends Controller
         ]);
     }
 
-    // PATCH /api/customers/{id}/deactivate (Menonaktifkan status customer)
     public function deactivate(int $customer): JsonResponse
     {
         $customerData = Customer::query()->find($customer);
