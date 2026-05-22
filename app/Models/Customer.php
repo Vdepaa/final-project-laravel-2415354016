@@ -7,12 +7,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Service extends Model
+class Customer extends Model
 {
     protected $fillable = [
-        'name', 
-        'price', 
-        'description', 
+        'customer_id',
+        'name',
+        'email',
+        'phone',
+        'address',
         'status'
     ];
 
@@ -20,7 +22,6 @@ class Service extends Model
     {
         return [
             'status' => 'boolean',
-            'price' => 'integer',
         ];
     }
 
