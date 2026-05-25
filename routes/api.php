@@ -13,6 +13,7 @@ Route::apiResource('services', ServiceController::class);
 // Modul Customer
 Route::patch('customers/{customer}/activate', [CustomerController::class, 'activate']);
 Route::patch('customers/{customer}/deactivate', [CustomerController::class, 'deactivate']);
+Route::delete('/customers/{id}', [CustomerController::class, 'destroy']);
 Route::apiResource('customers', CustomerController::class);
 
 // Modul Subscription
